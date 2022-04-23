@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            velocity = velocity*0.707f;
+        }
+
         if (Input.GetKey(KeyCode.W))
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + velocity);
@@ -34,5 +39,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector2(transform.position.x + velocity, transform.position.y);
 
         }
+        velocity = 0.03f;
     }
 }
