@@ -6,13 +6,14 @@ public class Spawn_Zombies : MonoBehaviour
 {
     public int timer;
     // Start is called before the first frame update
+    public GameObject zombie;
     void Start()
     {
         timer = 0;
     }
 
     // Update is called once per frame
-    public GameObject zombie;
+    
     void Update()
     {
         timer++;
