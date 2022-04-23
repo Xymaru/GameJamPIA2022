@@ -28,5 +28,17 @@ public class Bullet : MonoBehaviour
 
 
         transform.position = new Vector2(transform.position.x - direction.x * velocity, transform.position.y + direction.y * velocity);
+        
+
     }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.layer == 7)
+        {
+            col.gameObject.GetComponent<ZombieMovement>().vida -= 10;
+        }
+            Destroy(this.gameObject);
+        
+    }
+
 }

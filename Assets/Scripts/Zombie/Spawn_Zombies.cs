@@ -7,6 +7,7 @@ public class Spawn_Zombies : MonoBehaviour
     public int timer;
     // Start is called before the first frame update
     public GameObject zombie;
+    public GameObject player;
     void Start()
     {
         timer = 0;
@@ -29,7 +30,7 @@ public class Spawn_Zombies : MonoBehaviour
                 
             }
             
-            Instantiate(zombie, new Vector3(x, y, 0), Quaternion.identity);
+            Instantiate(zombie, new Vector3(player.transform.position.x + x, player.transform.position.y + y, 0), Quaternion.identity);
         }
     }
 }
