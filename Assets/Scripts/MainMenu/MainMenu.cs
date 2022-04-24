@@ -24,4 +24,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void controls()
+    {
+        SceneManager.LoadScene("Scene_Instruccions");
+    }
+    public void dead()
+    {
+        Application.Quit();
+    }
 }

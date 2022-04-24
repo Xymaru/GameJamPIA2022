@@ -15,14 +15,14 @@ public class Bullet : MonoBehaviour
         Debug.Log(rotation);
      
         
-        velocity = 0.05f;
+        velocity = 0.15f;
         GameObject player = GameObject.Find("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         direction.x = Mathf.Sin(rotation/180*3.1459f);
         direction.y = Mathf.Cos(rotation / 180 * 3.1459f);

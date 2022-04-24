@@ -6,16 +6,18 @@ using TMPro;
 
 public class PlayerGuns : MonoBehaviour
 {
+    public int desbloquejar=0;
+
     int arma;
 
     int balesPistolaRecamara;
-    int balesPistolaReserva=21;
+    int balesPistolaReserva=14;
 
-    int balasEscoputaRecamara=7;
+    int balasEscoputaRecamara=5;
     int balasEscoputaReserva = 5;
 
-    int balasSubfusilRecamara=7;
-    int balasSubfusilReserva = 5;
+    int balasSubfusilRecamara=30;
+    int balasSubfusilReserva = 30;
 
     public GameObject textBalesRecamara;
     public GameObject textBalesReserva;
@@ -44,7 +46,7 @@ public class PlayerGuns : MonoBehaviour
             delayArma++;
         }
 
-        if (delayArma > 50)
+        if (delayArma > 25)
         {
             delayArma = 0;
         }
@@ -183,9 +185,9 @@ public class PlayerGuns : MonoBehaviour
                 }
 
             }
-            if (Input.GetKey(KeyCode.R) && balasEscoputaRecamara < 7 && balasEscoputaReserva > 0)
+            if (Input.GetKey(KeyCode.R) && balasEscoputaRecamara < 5 && balasEscoputaReserva > 0)
             {
-                int balaAux = 7 - balasEscoputaRecamara;
+                int balaAux = 5 - balasEscoputaRecamara;
                 while (true)
                 {
                     if (balasEscoputaReserva == 0)
@@ -194,13 +196,13 @@ public class PlayerGuns : MonoBehaviour
                     }
                     else
                     {
-                        if (balasEscoputaRecamara < 7)
+                        if (balasEscoputaRecamara < 5)
                         {
                             balasEscoputaRecamara++;
                             balasEscoputaReserva--;
                         }
                     }
-                    if (balasEscoputaRecamara == 7)
+                    if (balasEscoputaRecamara == 5)
                     {
                         break;
                     }
@@ -234,9 +236,9 @@ public class PlayerGuns : MonoBehaviour
                 
 
             }
-            if (Input.GetKey(KeyCode.R) && balasSubfusilRecamara < 7 && balasSubfusilReserva > 0)
+            if (Input.GetKey(KeyCode.R) && balasSubfusilRecamara < 30 && balasSubfusilReserva > 0)
             {
-                int balaAux = 7 - balasSubfusilRecamara;
+                int balaAux = 30 - balasSubfusilRecamara;
                 while (true)
                 {
                     if (balasSubfusilReserva == 0)
@@ -245,13 +247,13 @@ public class PlayerGuns : MonoBehaviour
                     }
                     else
                     {
-                        if (balasSubfusilRecamara < 7)
+                        if (balasSubfusilRecamara < 30)
                         {
                             balasSubfusilRecamara++;
                             balasSubfusilReserva--;
                         }
                     }
-                    if (balasSubfusilRecamara == 7)
+                    if (balasSubfusilRecamara == 30)
                     {
                         break;
                     }

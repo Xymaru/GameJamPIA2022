@@ -15,10 +15,10 @@ public class Spawn_Zombies : MonoBehaviour
 
     // Update is called once per frame
     
-    void Update()
+    void FixedUpdate()
     {
         timer++;
-        if (timer > 1000)
+        if (timer > 250)
         {
             timer = 0;
             float x = 0;

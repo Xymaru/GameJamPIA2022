@@ -8,11 +8,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocity = 0.03f;
+        velocity = 0.08f;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
@@ -39,6 +39,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector2(transform.position.x + velocity, transform.position.y);
 
         }
-        velocity = 0.03f;
+        velocity = 0.08f;
     }
 }

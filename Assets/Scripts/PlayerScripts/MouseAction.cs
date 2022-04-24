@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseAction : MonoBehaviour
 {
     //public GameObject player;
-    void Update()
+    void FixedUpdate()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.rotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);

@@ -17,11 +17,11 @@ public class Player_stats : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         textVida.GetComponent<TextMeshProUGUI>().text = "Vida: " + vida*2;
         contador++;
-        if (contador > 500)
+        if (contador > 150)
         {
             contador = 0;
             vida += 1;

@@ -13,13 +13,13 @@ public class ZombieMovement : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("Player");
-        velocitat = Random.Range(0.01f, 0.002f);
+        velocitat = Random.Range(0.045f, 0.015f);
         vida = Random.Range(1, 5);
         vida = vida * 10;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector2 pos = Player.GetComponent<Transform>().position;
         transform.position = Vector2.MoveTowards(transform.position, pos, velocitat);
@@ -40,7 +40,7 @@ public class ZombieMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            if (contador > 200)
+            if (contador > 50)
             {
                 tocat = false;
             }
