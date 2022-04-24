@@ -23,36 +23,56 @@ public class PlayerGuns : MonoBehaviour
     //BATE, KATANA, PISTOLA, ESCOPUTA, SUBFUSIL  
 
     public GameObject Bullet;
+    public GameObject Bate;
+    public GameObject Katana;
+
+    public int delayArma;
     // Start is called before the first frame update
     void Start()
     {
         balesPistolaRecamara = 7;
         arma = 2;
+        delayArma = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (delayArma > 0)
+        {
+            delayArma++;
+        }
+
+        if (delayArma > 50)
+        {
+            delayArma = 0;
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             arma = 0;
+            delayArma = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             arma = 1;
+            delayArma = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             arma = 2;
+            delayArma = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             arma = 3;
+            delayArma = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             arma = 4;
+            delayArma = 0;
         }
 
 
@@ -66,20 +86,35 @@ public class PlayerGuns : MonoBehaviour
 
         if (arma == 0)
         {
+            if (Input.GetMouseButtonDown(0) && delayArma == 0)
+            {
+                delayArma++;
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Instantiate(Bate, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
+                Physics2D.IgnoreCollision(Bate.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            }
             textBalesRecamara.GetComponent<TextMeshProUGUI>().text = "";
             textBalesReserva.GetComponent<TextMeshProUGUI>().text = "";
             textArma.GetComponent<TextMeshProUGUI>().text = "Arma: Bate";
         }
         else if (arma == 1)
         {
+            if (Input.GetMouseButtonDown(0) && delayArma == 0)
+            {
+                delayArma++;
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Instantiate(Katana, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
+                Physics2D.IgnoreCollision(Katana.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            }
             textBalesRecamara.GetComponent<TextMeshProUGUI>().text = "";
             textBalesReserva.GetComponent<TextMeshProUGUI>().text = "";
             textArma.GetComponent<TextMeshProUGUI>().text = "Arma: Katana";
         }
         else if (arma == 2)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && delayArma == 0)
             {
+                delayArma++;
                 //Debug.Log("pium");
                 if (balesPistolaRecamara > 0)
                 {
@@ -124,14 +159,22 @@ public class PlayerGuns : MonoBehaviour
         }
         else if (arma == 3)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && delayArma == 0)
             {
+                delayArma++;
                 //Debug.Log("pium");
                 if (balasEscoputaRecamara > 0)
                 {
                     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
+                    mousePos.x += Random.Range(-1, 1);
+                    mousePos.y += Random.Range(-1, 1);
+                    Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
+                    mousePos.x += Random.Range(-1, 1);
+                    mousePos.y += Random.Range(-1, 1);
+                    Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
                     Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
                     balasEscoputaRecamara--;
                 }
                 else
@@ -169,20 +212,26 @@ public class PlayerGuns : MonoBehaviour
         }
         else if (arma == 4)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0) && delayArma == 0)
             {
                 //Debug.Log("pium");
-                if (balasSubfusilRecamara > 0)
-                {
-                    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
-                    Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-                    balasSubfusilRecamara--;
-                }
-                else
-                {
+                delayArma++;
+                
+                    if (balasSubfusilRecamara > 0)
+                    {
+                        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        Instantiate(Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
+                        Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+                        balasSubfusilRecamara--;
+                    }
+                    else
+                    {
 
-                }
+                    }
+                
+               
+                    
+                
 
             }
             if (Input.GetKey(KeyCode.R) && balasSubfusilRecamara < 7 && balasSubfusilReserva > 0)

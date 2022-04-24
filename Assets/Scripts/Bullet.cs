@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
         velocity = 0.05f;
         GameObject player = GameObject.Find("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        
     }
 
     // Update is called once per frame
@@ -37,7 +38,15 @@ public class Bullet : MonoBehaviour
         {
             col.gameObject.GetComponent<ZombieMovement>().vida -= 10;
         }
+        if(col.gameObject.tag == "bala")
+        {
+
+        }
+        else
+        {
             Destroy(this.gameObject);
+
+        }
         
     }
 

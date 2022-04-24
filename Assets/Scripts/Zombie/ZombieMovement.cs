@@ -7,7 +7,8 @@ public class ZombieMovement : MonoBehaviour
     public GameObject Player;
     float velocitat;
     public int vida;
-
+    public int contador = 0;
+    bool tocat = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,31 @@ public class ZombieMovement : MonoBehaviour
         if (vida <= 0)
         {
             Destroy(this.gameObject);
+        }
+
+        if(tocat == true)
+        {
+            contador++;
+        }
+        
+    }
+    
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            if (contador > 200)
+            {
+                tocat = false;
+            }
+            if (tocat == false)
+            {
+                tocat = true;
+                contador = 0;
+                col.gameObject.GetComponent<Player_stats>().vida -= 5;
+            }
+            
+            
         }
     }
 }
